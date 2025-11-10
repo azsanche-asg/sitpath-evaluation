@@ -1,0 +1,14 @@
+numpy
+scipy
+pandas
+matplotlib
+torch>=2.1
+torchvision
+torchaudio
+tqdm
+pyyaml
+einops
+opencv-python
+scikit-learn
+seaborn==0.0  # placeholder to block; DO NOT USE (we'll rely on matplotlib)
+loguru

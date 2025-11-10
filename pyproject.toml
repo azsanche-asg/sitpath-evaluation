@@ -1,0 +1,10 @@
+[build-system]
+requires = ["setuptools>=68","wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sitpath-eval"
+version = "0.1.0"
+description = "Evaluation suite for SitPath: symbolic situation tokens for spatio-temporal path forecasting"
+readme = "README.md"
+requires-python = ">=3.10"
