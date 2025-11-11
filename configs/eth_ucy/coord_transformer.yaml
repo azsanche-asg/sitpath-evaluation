@@ -1,0 +1,46 @@
+dataset:
+  name: eth_ucy
+  obs_len: 8
+  pred_len: 12
+  fps: 2.5
+  cache_dir: cache/eth_ucy/
+
+model:
+  name: coord_transformer
+  type: transformer
+  input_representation: coordinates
+  d_model: 128
+  num_layers: 2
+  n_heads: 4
+  dropout: 0.1
+  matched_capacity: true
+
+training:
+  seeds: [0, 1, 2]
+  batch_size: 64
+  epochs: 40
+  optimizer:
+    name: AdamW
+    lr: 0.001
+  early_stop_metric: ADE
+  log_dir: outputs/eth_ucy/coord_transformer/
+
+eval:
+  sampling:
+    K: 20
+  metrics:
+    - ADE
+    - FDE
+    - minADE20
+    - MR2m
+    - NLL
+    - ECE
+    - diversity
+
+tokenizer:
+  M: 16
+  R: 5.0
+  B: 4
+  K_tau: 3
+  collapse: true
+  stall_eps: 0.05

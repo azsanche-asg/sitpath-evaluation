@@ -1,0 +1,45 @@
+dataset:
+  name: sdd_mini
+  obs_len: 8
+  pred_len: 12
+  fps: 2.5
+  cache_dir: cache/sdd_mini/
+
+model:
+  name: sitpath_gru
+  type: gru
+  input_representation: sitpath_tokens
+  hidden_size: 128
+  num_layers: 2
+  dropout: 0.1
+  matched_capacity: true
+
+training:
+  seeds: [0, 1, 2]
+  batch_size: 64
+  epochs: 30
+  optimizer:
+    name: AdamW
+    lr: 0.001
+  early_stop_metric: ADE
+  log_dir: outputs/sdd_mini/sitpath_gru/
+
+eval:
+  sampling:
+    K: 20
+  metrics:
+    - ADE
+    - FDE
+    - minADE20
+    - MR2m
+    - NLL
+    - ECE
+    - diversity
+
+tokenizer:
+  M: 16
+  R: 5.0
+  B: 4
+  K_tau: 3
+  collapse: true
+  stall_eps: 0.05
